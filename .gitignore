@@ -5,3 +5,4 @@ dist/
 *.log
 supabase/.branches
 supabase/.temp
+web/tsconfig.tsbuildinfo

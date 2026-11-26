@@ -42,7 +42,8 @@ function Rotte() {
   const loc = useLocation();
   const { pathname } = loc;
   if (!pronto) return <main className="pagina"><Caricamento /></main>;
-  if (pathname === '/nuova-password') return <NuovaPassword />;
+  // dal link di invito o di recupero, e finché un referente invitato non ha scelto la password
+  if (pathname === '/nuova-password' || profilo?.invito_in_attesa) return <NuovaPassword />;
   if (pathname.startsWith('/stampa/') && profilo) return <Routes><Route path="/stampa/:tipo/:id" element={<Stampa />} /></Routes>;
   if (!profilo) {
     return (

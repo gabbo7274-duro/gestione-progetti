@@ -1,0 +1,47 @@
+# Configurazione per la CLI di Supabase (sviluppo in locale e `supabase config push`).
+project_id = "gestione-progetti"
+
+[api]
+schemas = ["public"]
+
+[db]
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[storage]
+file_size_limit = "10MiB"
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/nuova-password", "http://localhost:5173/"]
+# l'accesso è solo su invito
+enable_signup = false
+minimum_password_length = 10
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = false
+otp_expiry = 3600
+
+[auth.email.template.invite]
+subject = "Ti hanno invitato su Gestione progetti"
+content_path = "./supabase/templates/invito.html"
+
+[auth.email.template.recovery]
+subject = "Reimposta la password di Gestione progetti"
+content_path = "./supabase/templates/recupero.html"
+
+[auth.email.template.magic_link]
+subject = "Il tuo link per accedere a Gestione progetti"
+content_path = "./supabase/templates/link-accesso.html"
+
+[functions.invita-referente]
+verify_jwt = true
+
+[functions.invia-email]
+# la chiamano il cron o la chiave di servizio: il controllo è dentro la funzione
+verify_jwt = false

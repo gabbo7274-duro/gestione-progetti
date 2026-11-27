@@ -1,0 +1,11 @@
+// Pubblicazione del portale su Cloudflare (Worker con soli file statici, nessun codice lato server).
+// Uso: npm run deploy  (prima, una volta sola: npx wrangler login)
+{
+  "name": "gestione-progetti",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // ogni indirizzo che non è un file (es. /richieste/123) apre index.html: le pagine le gestisce React
+    "not_found_handling": "single-page-application"
+  }
+}

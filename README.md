@@ -109,6 +109,8 @@ npm run dev
 
 Per la pubblicazione, `npm run build` crea la cartella `web/dist`, da caricare su Vercel, Netlify o simili. I file `vercel.json` e `public/_redirects` fanno funzionare i link diretti alle pagine.
 
+**Su Cloudflare** (configurazione in `web/wrangler.jsonc`): la prima volta `npx wrangler login`, poi `npm run deploy`, che crea la build e la pubblica. Le variabili `VITE_…` finiscono nella build, quindi `.env.local` va compilato prima. Dopo la prima pubblicazione metti l'indirizzo del portale nella Site URL e nelle Redirect URLs di Supabase e nel segreto `URL_PORTALE`.
+
 `VITE_EMAIL_CONTATTO`, facoltativa, è l’indirizzo mostrato a chi ha l’account disattivato.
 
 ### Struttura
